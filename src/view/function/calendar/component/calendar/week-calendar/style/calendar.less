@@ -1,0 +1,232 @@
+@import "../../stylus/shared";
+
+#week-calendar {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  font-size: 14px;
+  user-select: none;
+  #calendar-header {
+    height: 72px;
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    #header-left, #header-right {
+      min-width: 150px;
+      width: 20%;
+    }
+
+    .header-center {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+      align-items: center;
+
+      .week-text {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .week-switcher {
+        height: 32px;
+        display: flex;
+
+        margin-left: 16px;
+        border-radius: 4px;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+
+        .icon-left, .icon-right, .back-this-week {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 0;
+
+          .hover-effect()
+        }
+        .icon-left, .icon-right {
+          width: 30px;
+          height: 30px;
+        }
+        .back-this-week {
+          width: 48px;
+        }
+      }
+    }
+  }
+  #calendar-week {
+    display: flex;
+    flex-shrink: 0;
+    height: 42px;
+    width: 100%;
+    .hour-label {
+      min-width: 56px;
+      flex-grow: 1;
+    }
+    .week-item {
+      padding: 0 15px;
+      width: 14%;
+      display: flex;
+      flex-shrink: 1;
+      justify-content: space-between;
+      align-items: center;
+
+      border-left: 1px solid #F5F5F5;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: var(--hover-color);
+      }
+      &:active { background-color: var(--pressed-color); }
+
+      .week-day { font-size: 20px; }
+    }
+    .week-selected {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+  }
+  #calendar-table {
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    #table-full-day {
+      position: relative;
+      display: flex;
+
+      .hidden-scroll();
+
+      #time-line {
+        position: absolute;
+        width: calc(100% - 56px);
+        left: 56px;
+        z-index: 1;
+
+        .time-line-text {
+          position: absolute;
+          left: -56px;
+          top: -8px;
+
+          width: 56px;
+          font-size: 12px;
+          line-height: 16px;
+
+          color: #F92D55;
+          text-align: center;
+          background-color: white;
+
+        }
+
+        .time-line-content {
+          height: 1px;
+          background-color: #F92D55;
+        }
+        .time-line-mark {
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          top: -3px;
+
+          border-radius: 50%;
+          background-color: #F92D55;
+        }
+      }
+    }
+    #line-full-day {
+      display: flex;
+      height: 66px;
+
+      .full-day-table {
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        .date-event-item {}
+
+        .date-event-list {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 99%;
+          overflow-x: hidden;
+
+          .hidden-scroll();
+        }
+      }
+    }
+    #line-full-day {
+      flex-shrink: 0;
+
+      .full-day-label {
+        min-width: 56px;
+      }
+      .full-day-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #DEDEDE;
+      }
+      .item-day {
+        width: 15%;
+        display: flex;
+        flex-shrink: 1;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        border-left: 1px solid #F5F5F5;
+        border-bottom: 1px solid #DEDEDE;
+      }
+    }
+
+    #line-date-label {
+      display: flex;
+      flex-direction: column;
+      min-width: 56px;
+
+      .hour-label {
+        height: 72px;
+        flex-shrink: 0;
+        text-align: center;
+
+        > div {
+          line-height: 16px;
+          margin-top: -8px;
+        }
+      }
+    }
+
+    .line-date {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      .item-hour {
+        height: 72px;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        border-left: 1px solid #F5F5F5;
+        border-bottom: 1px solid #F5F5F5;
+
+        .item-hour-top, .item-hour-bottom {
+          width: 100%;
+          height: 50%;
+
+          &:active { background-color: #EDF4FC; }
+        }
+      }
+    }
+  }
+}
